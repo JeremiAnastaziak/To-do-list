@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var todoList = document.getElementById("todoList");
         todoList.innerHTML = "";
         localStorage.clear();
+        btn.style.display = 'none';
         inputTask.focus();
         inputTask.select();
     }
