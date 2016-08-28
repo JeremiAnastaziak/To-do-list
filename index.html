@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
+
 <html lang="eng">
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	
+  
   <title>TO-DO LIST</title>
   <script src="js/script.js"></script>
 
@@ -18,8 +19,12 @@
 </head>
 
 <body>
-	<div class="container">
-    <h1>TO-DO LIST</h1>
+  <div class="container">
+    <hgroup class="container__hgroup">
+      <h1>TO-DO LIST</h1>
+      <h3>Simpe To-do list created with pure JavaScript and HTML5 Web Storage API. <br>Feel free to close your browser and keep your tasks storaged.</h3>
+      
+    </hgroup>
     <div class="btn-group">
       <input id="task" type="text" placeholder="Add task to your to-do list...">
       <button id="addTask">Add</button> 
@@ -28,8 +33,9 @@
     <ul id="todoList">
     </ul>
     </section>
-
-    <button id="clearStorage">Clear</button> 
-
+    
+    <div class = "container__clear">
+      <button id="clearStorage">Clear</button> 
+    </div>
   </div>
 </body>

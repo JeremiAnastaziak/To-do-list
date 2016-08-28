@@ -1,36 +1,49 @@
 html,body {
+  display: inline-block;
   color:white;
   font-family: 'Lato', sans-serif;
   text-align: center;
   background-color: #8BC34A;
+  overflow-x: hidden;
 }
 
-h1{
-  font-size: 40px;
+.container__hgroup {
+  padding-bottom: 40px;
 }
+.container__hgroup h1, h3, h4 {
+  font-weight: 300;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  padding:0;
+  
+}
+.container__hgroup h1 {
+  font-size: 3.0rem;
+  padding: 20px;
+}
+
 
 ul {
   display: inline-block;
   text-align: center;
-  width:500px;
   list-style: none;
 }
 
 li {
   color:black;
   margin-left: -38px;
-  text-align: left;
-  padding: 10px 20px;x
-  margin-bottom: 2px;
-  border-bottom: 1px solid darkgrey;
+  text-align: left; 
+  padding: 10px 20px;
+  border-bottom: 2px solid darkgrey;
   background-color: white;
   animation: fadeOut .3s linear forwards;
+  width: 34vw;
 }
 
 span {
   padding-left: 10px;
   letter-spacing: 0.02em;
-  cursor: default;
+  cursor: pointer;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
   -moz-user-select: none;      /* Firefox */
@@ -49,14 +62,20 @@ span {
 .btn-group{
   display: inline;
 }
-
-#clearStorage {
+.container__clear {
+  width: 36vw;
   display: inline-block;
-  margin-left: 31vw;
+  overflow: auto;
+  white-space: nowrap;
+  margin:0px auto;
+}
+#clearStorage {
+  display: inline;
+  float:right;
 }
 
 button {
-  width:100px;
+  width:8vw;
   color:white;
   border:none;
   padding: 10.5px;
@@ -68,12 +87,13 @@ button {
 }
 
 input[type="text"] {
-  width:400px;
   color:#fff;
   font-family: 'Lato', sans-serif;
   font-size: 20px;
   border: none;
   background-color: #689F38;
+  display: inline-block;
+  width: 28vw;
   padding: 10px;
 
   vertical-align: middle;
@@ -118,4 +138,33 @@ input:focus, button:focus{
 :-ms-input-placeholder {  
    color: #DCEDC8;  
 }
+@media only screen and (max-width: 1000px)  {
+  input[type="text"] {
+    width:46vw;
+  }
+  button {
+    width:14vw;
+  }
+  li{
+    width: 57vw;
+  }
+  .container__clear {
+    width:60vw;
+  }
+}
 
+@media only screen and (max-width: 600px)  {
+  input[type="text"] {
+    width:72vw;
+  }
+  button {
+    width:18vw;
+  }
+  li{
+    width:87vw;
+  }
+
+  .container__clear {
+    width:83vw;
+  }
+}
