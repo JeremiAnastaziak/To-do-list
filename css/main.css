@@ -1,10 +1,30 @@
+.modal-open {
+  margin:0;
+  padding: 0;
+  position: fixed;
+  z-index: 90;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background: rgba(21,21,21,0.4);
+  transition: .2 ease-out all;
+}
+.modal {
+  position:fixed;
+  z-index: 999;
+  top:20%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  opacity: 1;
+}
 html,body {
   display: inline-block;
   color:white;
   font-family: 'Lato', sans-serif;
   text-align: center;
   background-color: #8BC34A;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .container__hgroup {
@@ -21,7 +41,7 @@ html,body {
   font-size: 3.0rem;
   padding: 20px;
 }
-
+ 
 
 ul {
   display: inline-block;
@@ -36,8 +56,8 @@ li {
   padding: 10px 20px;
   border-bottom: 2px solid darkgrey;
   background-color: white;
-  animation: fadeOut .3s linear forwards;
   width: 34vw;
+  margin-bottom:1px;
 }
 
 span {
@@ -97,6 +117,14 @@ input[type="text"] {
   padding: 10px;
 
   vertical-align: middle;
+}
+
+input[type="text"].modal-input {
+  background-color: white;
+  border: 1px solid rgba(21,21,21,0.2);
+  color:#000;
+  font-size: 17px;
+  width: 80vw;
 }
 
 .fa {
@@ -167,4 +195,108 @@ input:focus, button:focus{
   .container__clear {
     width:83vw;
   }
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes rotateOutDownRight {
+  from {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    opacity: 1;
+  }
+
+  to {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+    transform: rotate3d(0, 0, 1, -45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateOutDownRight {
+  from {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    opacity: 1;
+  }
+
+  to {
+    -webkit-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+    transform: rotate3d(0, 0, 1, -45deg);
+    opacity: 0;
+  }
+}
+
+.rotateOutDownRight {
+  -webkit-animation-name: rotateOutDownRight;
+  animation-name: rotateOutDownRight;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+::selection {background-color: #BFE69D;}
+::-moz-selection {background-color: #BFE69D;}
+::-webkit-selection {background-color: #BFE69D;}
+
+.animated.bounceIn,
+.animated.bounceOut {
+  -webkit-animation-duration: .75s;
+  animation-duration: .75s;
 }
