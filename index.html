@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <title>TO-DO LIST</title>
-  <script src="js/script.js"></script>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -19,7 +18,7 @@
 </head>
 
 <body>
-  <div class="container">
+  <div id="container">
     <hgroup class="container__hgroup">
       <h1>TO-DO LIST</h1>
       <h3>Simpe To-do list created with pure JavaScript and HTML5 Web Storage API. <br>Feel free to close your browser and keep your tasks storaged.</h3>
@@ -30,7 +29,7 @@
       <button id="addTask">Add</button> 
     </div>
     <section>
-    <ul id="todoList">
+    <ul id="sortable">
     </ul>
     </section>
     
@@ -38,4 +37,8 @@
       <button id="clearStorage">Clear</button> 
     </div>
   </div>
+  <script src="js/script.js"></script>
+  <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+  
+  </script>
 </body>

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
-  //do work
+
     function updateStatus() {
         if (this.checked) {
             var checkBoxId = this.id.replace("cb_", "").replace("_checked", "");
@@ -20,16 +20,73 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
     function renameTask() {
+        this.addEventListener("click", function(event) {
+            event.stopPropagation();
+        })
+        var modal = document.createElement("div");
+        var body = document.getElementsByTagName("body");
+        var modalInput = document.createElement("input");
+        var taskBefore = this.innerText;
+        var sotrageItem = this.id.replace("span_", "");
+        modalInput.setAttribute('type', 'text');
+        modalInput.setAttribute('value', taskBefore);
+        modalInput.className = "modal-input";
+        modalInput.focus();
+        body[0].className ="modal-open";
+        modal.className = "modal animated fadeIn";
+        body[0].appendChild(modal);
+        modal.appendChild(modalInput);
+        modalInput.focus();
+        modalInput.select();
+
+       
+        modalInput.addEventListener("click", function(event) {
+            event.stopPropagation();
+        })
+        
+        modalInput.addEventListener("keyup", function(event){
+            if (event.which == 13) {
+                taskBefore = modalInput.value;
+                console.log(taskBefore);
+                console.log(sotrageItem);
+                document.getElementById("span_" + sotrageItem).innerText = modalInput.value;
+                localStorage[sotrageItem] = modalInput.value;
+                body[0].className = "";
+                modalInput.style.display = "none";
+            }
+        }); 
+
+        modalInput.addEventListener("keyup", function(event){
+            if (event.which == 27 || event.which == 13) {
+                body[0].className = "";
+                modal.removeChild(modalInput);
+            }
+        });
+
+        body[0].addEventListener("click", function() {
+            console.log("click");
+            body[0].className = "";
+            modalInput.style.display = "none";
+        })
+        /*
+        if(modalInput === document.activeElement) {
+            console.log("active");
+        }
+
         var renameText = prompt("Type a task to be replaced by:");
         if (!renameText || renameText == " " || renameText == "") {
                 return false;
             }
-        this.innerText = renameText;
+        this.innerText = renameText;*/
     }
     function removeTask() {
-        var todoList = document.getElementById("todoList");
+        var taskToRemove = this.parentNode;
+        var todoList = document.getElementById("sortable");
         var btnClear = document.getElementById("clearStorage");
-        this.parentNode.style.display = 'none';
+        taskToRemove.className = 'animated rotateOutDownRight';
+        setTimeout(function (){
+            taskToRemove.style.display = "none";
+        }, 1000); // How long do you want the delay to be (in milliseconds)? 
         localStorage.removeItem(this.id);
         if (localStorage.length == 0) {
             btnClear.style.display = 'none';
@@ -52,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var checkBox = document.createElement("input");
         var span = document.createElement("span");
         var removeIcon = document.createElement("i");
-        var todoList = document.getElementById("todoList");
+        var todoList = document.getElementById("sortable");
         var btnClear = document.getElementById("clearStorage");
 
         listItem.className = "create";
@@ -82,10 +139,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
     function clearList() {
-        var todoList = document.getElementById("todoList");
+        var todoList = document.getElementById("sortable");
         todoList.innerHTML = "";
         localStorage.clear();
-        btn.style.display = 'none';
+        btnClear.style.display = 'none';
         inputTask.focus();
         inputTask.select();
     }
@@ -107,11 +164,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var checkBox = document.createElement("input");
         var span = document.createElement("span");
         var removeIcon = document.createElement("i");
-        var todoList = document.getElementById("todoList");
+        var todoList = document.getElementById("sortable");
 
         btnClear.style.display = 'inline-block';
 
-        listItem.className = "create";
+        listItem.className = "create animated bounceInUp";
         listItem.id = "li_"+ id_elements;
 
         checkBox.type = "checkBox";
